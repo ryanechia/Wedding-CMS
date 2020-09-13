@@ -9,12 +9,18 @@ class Rsvp(models.Model):
 class MealChoice(models.Model):
     name = models.CharField(max_length=200)
 
+    def __str__(self):
+        return self.name
+
 
 class Attendee(models.Model):
     rsvp = models.OneToOneField(Rsvp, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     meal_choice = models.ForeignKey(MealChoice, on_delete=models.SET_NULL, blank=True, null=True)
+
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name
 
 
 class AttendeeGuest(models.Model):
@@ -23,3 +29,6 @@ class AttendeeGuest(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     meal_choice = models.ForeignKey(MealChoice, on_delete=models.SET_NULL, blank=True, null=True)
+
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name
