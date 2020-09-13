@@ -10,6 +10,7 @@ class AttendeeInline(admin.StackedInline):
 
 class AttendeeGuestInline(admin.StackedInline):
     classes = ['collapse']
+    fields = ['first_name', 'last_name', 'meal_choice']
     model = AttendeeGuest
     extra = 3
 
