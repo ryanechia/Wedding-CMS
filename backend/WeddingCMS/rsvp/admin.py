@@ -18,6 +18,16 @@ class AttendeeGuestInline(admin.StackedInline):
 class RsvpAdmin(admin.ModelAdmin):
     inlines = [AttendeeInline, AttendeeGuestInline]
 
+    def save_formset(self, request, form, formset, change):
+        instances = formset.save(commit=False)
+
+        for instance in instances:
+            if formset.model == AttendeeGuest:
+                instance.guest_host = form.instance.attendee
+
+            instance.save()
+        formset.save_m2m()
+
 
 admin.site.register(Rsvp, RsvpAdmin)
 admin.site.register(Attendee)
