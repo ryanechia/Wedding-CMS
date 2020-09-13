@@ -5,6 +5,9 @@ class Rsvp(models.Model):
     submission_date = models.DateTimeField('Submission date')
     invite_sent_date = models.DateTimeField('Invite sent date')
 
+    def __str__(self):
+        return self.attendee.first_name + ' ' + self.attendee.last_name
+
 
 class MealChoice(models.Model):
     name = models.CharField(max_length=200)
