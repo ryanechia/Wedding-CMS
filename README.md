@@ -14,3 +14,8 @@ Apply db migrations:
 ```shell script
 pipenv run python manage.py migrate
 ```
+
+Add a initial superuser:
+```shell script
+pipenv run python manage.py createsuperuser
+```
