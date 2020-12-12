@@ -7,6 +7,7 @@ class RSVPSerializer(serializers.ModelSerializer):
         model = Rsvp
         fields = '__all__'
 
+
 class RSVPViewSet(viewsets.ModelViewSet):
     queryset = Rsvp.objects.all()
-    serializers_class = RSVPSerializer
+    serializer_class = RSVPSerializer
