@@ -3,11 +3,11 @@ from django.contrib import admin
 from .models import Rsvp, Attendee, AttendeeGuest, MealChoice
 
 
-class AttendeeInline(admin.StackedInline):
-    classes = ['collapse']
-    model = Attendee
-
-
+# class AttendeeInline(admin.StackedInline):
+#     classes = ['collapse']
+#     model = Attendee
+#
+#
 class AttendeeGuestInline(admin.StackedInline):
     classes = ['collapse']
     fields = ['first_name', 'last_name', 'meal_choice']
@@ -16,7 +16,8 @@ class AttendeeGuestInline(admin.StackedInline):
 
 
 class RsvpAdmin(admin.ModelAdmin):
-    inlines = [AttendeeInline, AttendeeGuestInline]
+    # inlines = [AttendeeInline, AttendeeGuestInline]
+    inlines = [AttendeeGuestInline]
 
     def save_formset(self, request, form, formset, change):
         instances = formset.save(commit=False)
